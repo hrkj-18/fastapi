@@ -1,5 +1,5 @@
 '''Schemas.py'''
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 
 class PostBase(BaseModel):
@@ -17,6 +17,18 @@ class Post(BaseModel):
     title:str
     content:str
     published:bool
+
+    class Config:
+        orm_mode = True
+
+class UserCreate(BaseModel):
+    '''Pydantic User Model: Used for validation of request coming from Postman'''
+    email:EmailStr
+    password:str
+
+class User(BaseModel):
+    '''Pydantic Post Model: Used for sending Post data to Postman'''
+    email:EmailStr
 
     class Config:
         orm_mode = True

@@ -5,4 +5,6 @@
     "python.analysis.extraPaths": [
         "C:/Users/HRKJ/OneDrive/Documents/GitHub/fastapi"
     ],
+
+    "python.pythonPath": "C:/Users/HRKJ/anaconda3/envs/api/python",
 }
