@@ -1,6 +1,5 @@
 '''models.py'''
-from enum import unique
-from sqlalchemy import  TIMESTAMP, Boolean, Column, Integer, String
+from sqlalchemy import TIMESTAMP, Boolean, Column, Integer, String
 from sqlalchemy.sql.expression import text
 
 from .database import Base
@@ -15,9 +14,10 @@ class Post(Base):
     content = Column(String, nullable=False)
     published = Column(Boolean, server_default='TRUE', nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),
-                        nullable = False,
-                        server_default = text('now()')
+                        nullable=False,
+                        server_default=text('now()')
                         )
+
 
 class User(Base):
     '''SQLAlchemy User Model: For Database'''
@@ -27,6 +27,6 @@ class User(Base):
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),
-                        nullable = False,
-                        server_default = text('now()')
+                        nullable=False,
+                        server_default=text('now()')
                         )

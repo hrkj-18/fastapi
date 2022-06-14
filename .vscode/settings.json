@@ -7,4 +7,5 @@
     ],
 
     "python.pythonPath": "C:/Users/HRKJ/anaconda3/envs/api/python",
+    "python.linting.enabled": false,
 }
