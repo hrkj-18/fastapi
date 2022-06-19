@@ -29,4 +29,4 @@ app.include_router(vote.router)
 
 @app.get('/')
 def root():
-    return{'message': 'Helloworld'}
+    return{'message': 'Check out the documentation https://fastapi-hrkj.herokuapp.com/docs or https://fastapi-hrkj.herokuapp.com/redoc'}
