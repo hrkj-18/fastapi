@@ -19,6 +19,7 @@ class Post(Base):
         nullable=False,
         server_default=text('now()')
     )
+    phone_number = Column(String)
     owner_id = Column(
         Integer,
         ForeignKey("users.id", ondelete="CASCADE"),
@@ -38,4 +39,19 @@ class User(Base):
         TIMESTAMP(timezone=True),
         nullable=False,
         server_default=text('now()')
+    )
+
+class Vote(Base):
+    '''SQLAlchemy Vote Model: For Database'''
+    __tablename__ = "votes"
+
+    user_id = Column(
+        Integer,
+        ForeignKey("users.id", ondelete="CASCADE"),
+        primary_key=True
+    )
+    post_id = Column(
+        Integer,
+        ForeignKey("posts.id", ondelete="CASCADE"),
+        primary_key=True
     )

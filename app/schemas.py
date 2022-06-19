@@ -1,6 +1,6 @@
 '''Schemas.py'''
 from typing import Optional
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, conint
 
 
 class UserCreate(BaseModel):
@@ -51,6 +51,15 @@ class Post(PostBase):
         orm_mode = True
 
 
+class PostOut(BaseModel):
+    '''Pydantic PostOut Model: Used for sending Post data to Postman'''
+    Post: Post
+    votes: int
+
+    class Config:
+        orm_mode = True
+
+
 class Token(BaseModel):
     '''Pydantic Token Model:
     Used for sending Post data to Postman'''
@@ -62,3 +71,9 @@ class TokenData(BaseModel):
     '''Pydantic Token Model:
     Used for receiving data from internal function'''
     id: Optional[str] = None
+
+class Vote(BaseModel):
+    '''Pydantic Vote Model:
+    Used for validation of request coming from Postman'''
+    post_id: int
+    dir: conint(le=1)  # either 0 or 1
